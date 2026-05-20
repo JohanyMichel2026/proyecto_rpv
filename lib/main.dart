@@ -1,11 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
+import 'core/constants/supabase_constants.dart';
+// 1. Cambiamos la importación del login por la del AuthWrapper
+import 'ui/auth/auth_wrapper.dart';
 
-Future<void> main() async {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+
   await Supabase.initialize(
-    url: 'https://nxccznovewlvgzovwlad.supabase.co',
-    anonKey: 'sb_publishable_rSg84p5uQodKQDMkNs5EJw_6OyafSqJ',
+    url: SupabaseConstants.url,
+    anonKey: SupabaseConstants.anonKey,
   );
+
   runApp(const MyApp());
 }
 
@@ -15,10 +21,15 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'proyecto_rpv',
-      home: Scaffold(
-        appBar: AppBar(title: const Text('Mi Aplicación Flutter')),
+      title: 'RPV - Villavicencio',
+      debugShowCheckedModeBanner: false,
+      theme: ThemeData(
+        primarySwatch: Colors.green,
+        useMaterial3: true,
+        colorScheme: ColorScheme.fromSeed(seedColor: Colors.green),
       ),
+      // 2. Ahora el 'home' es el AuthWrapper
+      home: const AuthWrapper(),
     );
   }
 }
