@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 import 'google_login_screen.dart';
 import '../reportero/home_reportero.dart';
+import '../administrador/home_admin_screen.dart';
 
 class AuthWrapper extends StatefulWidget {
   const AuthWrapper({super.key});
@@ -52,19 +53,7 @@ class _AuthWrapperState extends State<AuthWrapper> {
           if (mounted) {
             setState(() {
               if (rol == 'admin') {
-                // TODO: Reemplazar con la pantalla real del Dashboard del Administrador
-                _pantallaDestino = const Scaffold(
-                  body: Center(
-                    child: Text(
-                      'Dashboard Admin\n(En construcción)',
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                        fontSize: 24,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                  ),
-                );
+                _pantallaDestino = const HomeAdminScreen();
               } else {
                 _pantallaDestino = const HomeReportero();
               }

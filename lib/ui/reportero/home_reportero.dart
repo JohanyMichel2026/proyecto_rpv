@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 import '../../services/auth_service.dart';
+import 'perfil_reportero.dart';
+import 'crear_reporte_screen.dart';
+import 'mis_reportes_screen.dart';
 
 class HomeReportero extends StatefulWidget {
   const HomeReportero({super.key});
@@ -32,14 +35,12 @@ class _HomeReporteroState extends State<HomeReportero> {
 
   Future<void> _cerrarSesion() async {
     await _authService.signOut();
-    // Nota: El AuthWrapper detectará el cierre de sesión y lo regresará al Login
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors
-          .grey[100], // Un fondo blanco grisáceo para que resalten las tarjetas
+      backgroundColor: Colors.grey[100], // Fondo blanco grisáceo
       appBar: AppBar(
         title: const Text(
           'Portal Ciudadano',
@@ -48,7 +49,6 @@ class _HomeReporteroState extends State<HomeReportero> {
         backgroundColor: Colors.green,
         foregroundColor: Colors.white,
         elevation: 0,
-        // ¡Se ha eliminado el botón de "Acceso Admin" de aquí!
       ),
       body: SafeArea(
         child: Padding(
@@ -80,9 +80,14 @@ class _HomeReporteroState extends State<HomeReportero> {
                 icono: Icons.add_a_photo,
                 colorFondo: Colors.green,
                 colorTexto: Colors.white,
+                // TODO: Navegar a la pantalla de crear reporte
                 alPresionar: () {
-                  // TODO: Navegar a la pantalla de crear reporte
-                  print('Navegar a Crear Reporte');
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => CrearReporteScreen(),
+                    ),
+                  );
                 },
               ),
 
@@ -100,8 +105,12 @@ class _HomeReporteroState extends State<HomeReportero> {
                       colorFondo: Colors.white,
                       colorTexto: Colors.black87,
                       alPresionar: () {
-                        // TODO: Navegar a la lista de reportes
-                        print('Navegar a Mis Reportes');
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => const MisReportesScreen(),
+                          ),
+                        );
                       },
                     ),
                   ),
@@ -115,8 +124,12 @@ class _HomeReporteroState extends State<HomeReportero> {
                       colorFondo: Colors.white,
                       colorTexto: Colors.black87,
                       alPresionar: () {
-                        // TODO: Navegar al perfil
-                        print('Navegar a Mi Perfil');
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => PerfilReportero(),
+                          ),
+                        );
                       },
                     ),
                   ),

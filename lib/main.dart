@@ -4,6 +4,7 @@ import 'core/constants/supabase_constants.dart';
 // 1. Cambiamos la importación del login por la del AuthWrapper
 import 'ui/auth/auth_wrapper.dart';
 
+//flutter run -d chrome --web-port=3000
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
