@@ -10,7 +10,7 @@ class MisReportesScreen extends StatefulWidget {
 
 class _MisReportesScreenState extends State<MisReportesScreen> {
   final _supabase = Supabase.instance.client;
-  bool _isLoading = false;
+  final bool _isLoading = false;
 
   // TODO: Más adelante esta lista vendrá vacía y se llenará consultando a Supabase
   // Por ahora usamos datos de prueba (Mock Data) para diseñar la interfaz

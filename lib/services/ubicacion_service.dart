@@ -1,5 +1,4 @@
 import 'package:supabase_flutter/supabase_flutter.dart';
-import '../models/comuna_model.dart';
 import '../models/parque_model.dart';
 
 class UbicacionService {

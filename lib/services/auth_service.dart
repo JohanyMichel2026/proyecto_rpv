@@ -28,7 +28,11 @@ class AuthService {
     try {
       // Esto abrirá el navegador de forma segura.
       // Supabase se encarga de todo el proceso de tokens por ti.
-      await _supabase.auth.signInWithOAuth(OAuthProvider.google);
+      await _supabase.auth.signInWithOAuth(
+        OAuthProvider.google,
+        redirectTo:
+            'apprpv://login-callback', // <-- ¡AQUÍ SE AGREGA LA LÍNEA CLAVE!
+      );
     } catch (e) {
       print("Error en Google Auth: $e");
     }
